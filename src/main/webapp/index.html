@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drink Menu - Home</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header>
+    <nav>
+        <a href="index.html" class="active">Home</a>
+        <a href="drinks.html">Drinks</a>
+    </nav>
+</header>
+
+<main>
+    <section class="hero-carousel">
+        <h2>Featured Drinks</h2>
+        <div class="carousel-content">
+            <img src="https://via.placeholder.com/800x300?text=Featured+Drink+1" alt="Featured Drink">
+        </div>
+    </section>
+
+    <section class="latest-drinks">
+        <h2>Últimos drinks adicionados</h2>
+        <div class="drink-grid" id="latest-drinks-container">
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2025 Drink Masters</p>
+</footer>
+
+<script src="js/script.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        loadLatestDrinks(4); // Load 4 latest drinks
+    });
+</script>
+</body>
+</html>

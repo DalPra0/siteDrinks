@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Drinks - Drink Menu</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="drinks.html" class="active">Drinks</a>
+    </nav>
+</header>
+
+<main>
+    <section class="all-drinks-section">
+        <div class="drinks-header">
+            <h2>Todos os Drinks</h2>
+            <a href="add-drink.html" class="btn-add-drink">Adicionar Drink +</a>
+        </div>
+        <div class="drink-grid" id="all-drinks-container">
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2025 Drink Masters</p>
+</footer>
+
+<script src="js/script.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        loadAllDrinks();
+    });
+</script>
+</body>
+</html>

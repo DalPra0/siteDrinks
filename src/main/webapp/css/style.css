@@ -1,0 +1,199 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-size: 1.2em;
+}
+
+nav a.active {
+    font-weight: bold;
+    border-bottom: 2px solid #ff9800;
+}
+
+/* Basic search bar styling (optional) */
+.search-bar {
+    margin-left: auto; /* Pushes search bar to the right if nav is wide enough */
+    padding-right: 20px; /* Some spacing */
+    display: flex;
+}
+.search-bar input {
+    padding: 5px;
+    border-radius: 3px 0 0 3px;
+    border: 1px solid #ccc;
+}
+.search-bar button {
+    padding: 5px 10px;
+    border-radius: 0 3px 3px 0;
+    border: 1px solid #ff9800;
+    background-color: #ff9800;
+    color: white;
+    cursor: pointer;
+}
+
+
+main {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.hero-carousel {
+    text-align: center;
+    margin-bottom: 30px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.hero-carousel img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+
+.latest-drinks h2, .all-drinks-section h2, .add-drink-form-section h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.drink-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.drink-card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+}
+
+.drink-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.drink-card h3 {
+    margin-top: 0;
+    color: #555;
+}
+
+.drink-card p {
+    font-size: 0.9em;
+    color: #666;
+    flex-grow: 1; /* Pushes rating to bottom */
+}
+
+.drink-card .rating {
+    font-size: 0.9em;
+    color: #ff9800;
+    margin-top: 10px;
+}
+
+.drinks-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.btn-add-drink {
+    background-color: #ff9800;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1em;
+}
+.btn-add-drink:hover {
+    background-color: #e68a00;
+}
+
+/* Form Styling */
+.add-drink-form-section {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+#add-drink-form div {
+    margin-bottom: 15px;
+}
+
+#add-drink-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+#add-drink-form input[type="text"],
+#add-drink-form input[type="url"],
+#add-drink-form input[type="number"],
+#add-drink-form textarea {
+    width: calc(100% - 22px); /* Account for padding and border */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Includes padding and border in the element's total width and height */
+}
+
+
+#add-drink-form button[type="submit"] {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+#add-drink-form button[type="submit"]:hover {
+    background-color: #218838;
+}
+
+#form-message {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+    margin-top: 30px;
+}

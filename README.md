@@ -5,13 +5,13 @@
 Este projeto é um sistema web para gerenciar um cardápio de drinks, desenvolvido como parte do Trabalho Discente Efetivo (TDE) da disciplina de Programação Orientada a Objetos do professor Eduardo Lino. O sistema permite visualizar drinks, adicionar novos drinks e ver os drinks mais recentemente adicionados.
 
 Conforme os requisitos do TDE:
-* O backend é desenvolvido em Java, rodando em um servidor[cite: 3].
-* A persistência de dados é feita em um banco de dados relacional MySQL[cite: 3].
-* O frontend é construído com HTML, CSS e JavaScript, utilizando a API `fetch` para comunicação com o backend[cite: 2].
-* O framework Spring/Spring Boot **não** é utilizado[cite: 4].
-* O sistema possui pelo menos 3 páginas com interface gráfica[cite: 2].
+* O backend é desenvolvido em Java, rodando em um servidor.
+* A persistência de dados é feita em um banco de dados relacional MySQL.
+* O frontend é construído com HTML, CSS e JavaScript, utilizando a API `fetch` para comunicação com o backend.
+* O framework Spring/Spring Boot **não** é utilizado.
+* O sistema possui pelo menos 3 páginas com interface gráfica.
 * O trabalho pode ser realizado em equipes de até 3 estudantes.
-* A data de entrega é 08/06[cite: 5].
+* A data de entrega é 08/06.
 
 ## Requisitos de Software
 

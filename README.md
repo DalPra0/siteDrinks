@@ -2,7 +2,7 @@
 
 ## Visão Geral
 
-Este projeto é um sistema web para gerenciar um cardápio de drinks, desenvolvido como parte do Trabalho Discente Efetivo (TDE) da disciplina de Programação Orientada a Objetos do professor Eduardo Lino[cite: 1]. O sistema permite visualizar drinks, adicionar novos drinks e ver os drinks mais recentemente adicionados.
+Este projeto é um sistema web para gerenciar um cardápio de drinks, desenvolvido como parte do Trabalho Discente Efetivo (TDE) da disciplina de Programação Orientada a Objetos do professor Eduardo Lino. O sistema permite visualizar drinks, adicionar novos drinks e ver os drinks mais recentemente adicionados.
 
 Conforme os requisitos do TDE:
 * O backend é desenvolvido em Java, rodando em um servidor[cite: 3].

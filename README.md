@@ -177,4 +177,3 @@ drinkmenu/
     5.  **Limpe e Reconstrua:** Pare o Tomcat, execute "Build" -> "Rebuild Project" no IntelliJ e tente iniciar o Tomcat novamente.
 
 ---
-Este guia deve cobrir os passos para instalar e rodar o código. Boa sorte com seu TDE!

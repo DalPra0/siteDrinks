@@ -95,6 +95,17 @@ main {
     flex-direction: column;
 }
 
+.drink-card:hover {
+    background-color: rgba(255, 152, 0, 0.4);
+    cursor: pointer;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+}
+
 .drink-card img {
     width: 100%;
     height: 200px;
@@ -196,4 +207,161 @@ footer {
     background-color: #333;
     color: white;
     margin-top: 30px;
+}
+
+.drink-details-page main{
+    padding-top: 60px; /* aumenta esse valor para afastar mais do header */
+    min-height: calc(100vh - 60px); /* para garantir que ocupe a altura mínima da tela */
+    align-items: center; /* centraliza horizontalmente */
+    justify-content: flex-start; /* se quiser centralizar verticalmente, pode usar center */
+}
+
+
+.drink-details-page h2 {
+    color: #ff9800;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.drink-details-page img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+.drink-details-page p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #444;
+}
+
+.drink-details-page button {
+    background-color: #ff9800;
+    border: none;
+    padding: 10px 15px;
+    margin-right: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.drink-details-page button:hover {
+    background-color: #e68a00;
+}
+
+.drink-details-page #edit-form-container {
+    margin-top: 20px;
+    background-color: #fff9e6;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #ffcc80;
+}
+
+.drink-details-page form label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.drink-details-page form input[type="text"],
+.drink-details-page form input[type="url"],
+.drink-details-page form input[type="number"],
+.drink-details-page form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.drink-details-page form button[type="submit"],
+.drink-details-page form button#cancel-edit-btn {
+    margin-top: 15px;
+}
+
+.drink-details-page footer p{
+    color: white;
+}
+
+/*       ========================== */
+
+/* Fundo escurecido da modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* ficar na frente */
+}
+
+/* Conteúdo da modal */
+.modal-content {
+    background-color: white;
+    padding: 20px 30px;
+    border-radius: 8px;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+/* Espaçamento entre campos */
+.modal-content label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.modal-content input[type="text"],
+.modal-content input[type="url"],
+.modal-content input[type="number"],
+.modal-content textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 1em;
+}
+
+/* Botões lado a lado */
+.modal-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.modal-buttons button {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.modal-buttons button[type="submit"] {
+    background-color: #28a745;
+    color: white;
+}
+
+.modal-buttons button[type="submit"]:hover {
+    background-color: #218838;
+}
+
+.modal-buttons #cancel-edit-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+.modal-buttons #cancel-edit-btn:hover {
+    background-color: #c82333;
 }

@@ -8,13 +8,14 @@ import java.util.List;
 public class DrinkDAO {
     private String jdbcURL = "jdbc:mysql://localhost:3306/drink_menu_db?useSSL=false&serverTimezone=UTC";
     private String jdbcUsername = "root"; // Replace with your MySQL username
-    private String jdbcPassword = "lucasdpb"; // Replace with your MySQL password
+    private String jdbcPassword = ""; // Replace with your MySQL password
 
     private static final String INSERT_DRINK_SQL = "INSERT INTO drinks (name, ingredients, instructions, image_url, rating) VALUES (?, ?, ?, ?, ?)";
     private static final String SELECT_DRINK_BY_ID = "SELECT id, name, ingredients, instructions, image_url, rating, created_at FROM drinks WHERE id = ?";
     private static final String SELECT_ALL_DRINKS = "SELECT id, name, ingredients, instructions, image_url, rating, created_at FROM drinks ORDER BY created_at DESC";
     private static final String SELECT_LATEST_DRINKS = "SELECT id, name, ingredients, instructions, image_url, rating, created_at FROM drinks ORDER BY created_at DESC LIMIT ?";
-
+    private static final String UPDATE_DRINK_SQL = "UPDATE drinks SET name = ?, ingredients = ?, instructions = ?, image_url = ?, rating = ? WHERE id = ?";
+    private static final String DELETE_DRINK_SQL = "DELETE FROM drinks WHERE id = ?";
 
     protected Connection getConnection() {
         Connection connection = null;
@@ -77,5 +78,47 @@ public class DrinkDAO {
         int rating = rs.getInt("rating");
         Timestamp createdAt = rs.getTimestamp("created_at");
         return new Drink(id, name, ingredients, instructions, imageUrl, rating, createdAt);
+    }
+
+    public Drink getDrinkById(int id) {
+        Drink drink = null;
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_DRINK_BY_ID)) {
+            preparedStatement.setInt(1, id);
+            ResultSet rs = preparedStatement.executeQuery();
+
+            if (rs.next()) {
+                drink = mapRowToDrink(rs);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return drink;
+    }
+
+    public boolean updateDrink(Drink drink) throws SQLException {
+        boolean rowUpdated;
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_DRINK_SQL)) {
+            preparedStatement.setString(1, drink.getName());
+            preparedStatement.setString(2, drink.getIngredients());
+            preparedStatement.setString(3, drink.getInstructions());
+            preparedStatement.setString(4, drink.getImageUrl());
+            preparedStatement.setInt(5, drink.getRating());
+            preparedStatement.setInt(6, drink.getId());
+
+            rowUpdated = preparedStatement.executeUpdate() > 0;
+        }
+        return rowUpdated;
+    }
+
+    public boolean deleteDrink(int id) throws SQLException {
+        boolean rowDeleted;
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(DELETE_DRINK_SQL)) {
+            preparedStatement.setInt(1, id);
+            rowDeleted = preparedStatement.executeUpdate() > 0;
+        }
+        return rowDeleted;
     }
 }

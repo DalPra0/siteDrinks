@@ -36,6 +36,9 @@ function displayDrinks(drinks, containerId) {
         card.appendChild(ingredients);
         card.appendChild(rating);
         container.appendChild(card);
+        card.addEventListener('click', () => {
+            window.location.href = `just-a-drink.html?id=${drink.id}`
+        })
     });
 }
 
@@ -119,4 +122,118 @@ function handleFormSubmission() {
             messageEl.textContent = 'Erro de conexão ao tentar adicionar o drink.';
         }
     });
+}
+
+async function loadDrinkDetails(id) {
+    const container = document.getElementById('drink-details');
+    if (!container) return;
+
+    try {
+        const response = await fetch(`${API_BASE_URL}/drinks-detail?id=${id}`);
+        if (!response.ok) throw new Error('Drink não encontrado');
+
+        const drink = await response.json();
+
+        container.innerHTML = `
+      <h2>${drink.name}</h2>
+      <img src="${drink.imageUrl || 'https://via.placeholder.com/300x200?text=No+Image'}" alt="${drink.name}">
+      <p><strong>Ingredientes:</strong> ${drink.ingredients}</p>
+      <p><strong>Instruções:</strong> ${drink.instructions}</p>
+      <p><strong>Avaliação:</strong> ${'★'.repeat(drink.rating)}${'☆'.repeat(5 - drink.rating)}</p>
+      <button id="edit-btn">Editar</button>
+      <button id="delete-btn">Excluir</button>
+      <div id="edit-form-container" style="display:none;"></div>
+    `;
+
+        document.getElementById('edit-btn').addEventListener('click', () => {
+            showEditForm(drink);
+        });
+
+        document.getElementById('delete-btn').addEventListener('click', () => {
+            if (confirm('Tem certeza que deseja excluir este drink?')) {
+                deleteDrink(drink.id);
+            }
+        });
+
+    } catch (error) {
+        container.innerHTML = `<p>Erro ao carregar o drink: ${error.message}</p>`;
+    }
+}
+
+function showEditForm(drink) {
+    const modal = document.getElementById('edit-modal');
+
+    modal.style.display = 'flex';
+
+    const form = modal.querySelector('#edit-drink-form');
+
+    // Preenche o formulário com os dados do drink
+    form.name.value = drink.name;
+    form.ingredients.value = drink.ingredients;
+    form.instructions.value = drink.instructions;
+    form.imageUrl.value = drink.imageUrl || '';
+    form.rating.value = drink.rating || 0;
+
+    const messageEl = modal.querySelector('#edit-form-message');
+    messageEl.textContent = '';
+
+    // Cancelar botão fecha a modal
+    modal.querySelector('#cancel-edit-btn').onclick = () => {
+        modal.style.display = 'none';
+    };
+
+    form.onsubmit = async (e) => {
+        e.preventDefault();
+
+        const updatedDrink = {
+            id: drink.id,
+            name: form.name.value,
+            ingredients: form.ingredients.value,
+            instructions: form.instructions.value,
+            imageUrl: form.imageUrl.value,
+            rating: parseInt(form.rating.value, 10)
+        };
+
+        try {
+            const response = await fetch(`${API_BASE_URL}/drinks-detail`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(updatedDrink)
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+                messageEl.style.color = 'green';
+                messageEl.textContent = 'Drink atualizado com sucesso!';
+                modal.style.display = 'none';
+                loadDrinkDetails(drink.id);
+            } else {
+                messageEl.style.color = 'red';
+                messageEl.textContent = result.message || 'Erro ao atualizar.';
+            }
+        } catch (error) {
+            console.error(error);
+            messageEl.style.color = 'red';
+            messageEl.textContent = 'Erro ao atualizar o drink.';
+        }
+    };
+}
+
+
+async function deleteDrink(id) {
+    try {
+        const response = await fetch(`${API_BASE_URL}/drinks-detail?id=${id}`, {
+            method: 'DELETE'
+        });
+        if (response.ok) {
+            alert('Drink excluído com sucesso!');
+            window.location.href = 'drinks.html'; // Redireciona para a lista
+        } else {
+            alert('Erro ao excluir o drink.');
+        }
+    } catch (error) {
+        alert('Erro ao excluir o drink.');
+        console.error(error);
+    }
 }

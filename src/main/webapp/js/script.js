@@ -1,4 +1,4 @@
-const API_BASE_URL = '/drinkmenu/api'; // Matches Tomcat application context + servlet pattern
+const API_BASE_URL = '/drinkmenu/api';
 
 function displayDrinks(drinks, containerId) {
     const container = document.getElementById(containerId);
@@ -6,7 +6,7 @@ function displayDrinks(drinks, containerId) {
         console.error(`Container with id ${containerId} not found.`);
         return;
     }
-    container.innerHTML = ''; // Clear previous content
+    container.innerHTML = '';
 
     if (!drinks || drinks.length === 0) {
         container.innerHTML = '<p>Nenhum drink encontrado.</p>';
@@ -106,7 +106,7 @@ function handleFormSubmission() {
                 messageEl.style.color = 'green';
                 messageEl.textContent = result.message || 'Drink adicionado com sucesso!';
                 form.reset();
-                setTimeout(() => { // Optional: Redirect after a delay
+                setTimeout(() => {
                     window.location.href = 'drinks.html';
                 }, 2000);
             } else {

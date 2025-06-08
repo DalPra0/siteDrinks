@@ -11,7 +11,6 @@ public class Drink {
     private int rating;
     private Timestamp createdAt;
 
-    // Constructors
     public Drink() {}
 
     public Drink(int id, String name, String ingredients, String instructions, String imageUrl, int rating, Timestamp createdAt) {
@@ -24,7 +23,7 @@ public class Drink {
         this.createdAt = createdAt;
     }
 
-    // Getters and Setters
+
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
 

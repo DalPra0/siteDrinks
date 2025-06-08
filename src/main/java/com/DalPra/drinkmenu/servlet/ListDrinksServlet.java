@@ -36,7 +36,7 @@ public class ListDrinksServlet extends HttpServlet {
                 int limit = Integer.parseInt(limitParam);
                 drinks = drinkDAO.getLatestDrinks(limit);
             } catch (NumberFormatException e) {
-                drinks = drinkDAO.getAllDrinks(); // fallback to all if limit is invalid
+                drinks = drinkDAO.getAllDrinks();
             }
         } else {
             drinks = drinkDAO.getAllDrinks();

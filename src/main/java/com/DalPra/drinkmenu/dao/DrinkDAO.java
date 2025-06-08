@@ -7,8 +7,8 @@ import java.util.List;
 
 public class DrinkDAO {
     private String jdbcURL = "jdbc:mysql://localhost:3306/drink_menu_db?useSSL=false&serverTimezone=UTC";
-    private String jdbcUsername = "root"; // Replace with your MySQL username
-    private String jdbcPassword = "lucasdpb"; // Replace with your MySQL password
+    private String jdbcUsername = "root";
+    private String jdbcPassword = "lucasdpb";
 
     private static final String INSERT_DRINK_SQL = "INSERT INTO drinks (name, ingredients, instructions, image_url, rating) VALUES (?, ?, ?, ?, ?)";
     private static final String SELECT_DRINK_BY_ID = "SELECT id, name, ingredients, instructions, image_url, rating, created_at FROM drinks WHERE id = ?";
